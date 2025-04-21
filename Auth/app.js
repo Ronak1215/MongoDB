@@ -4,7 +4,6 @@ const app = express();
 const bcrypt = require("bcrypt");
 const path = require("path");
 const userModel = require("./models/user");
-const { hash } = require("crypto");
 const jwt = require("jsonwebtoken")
 
 app.set("view engine", "ejs");
