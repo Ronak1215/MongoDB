@@ -46,7 +46,11 @@ app.post("/login",async (req,res)=>{
   if(!user) return res.send("Something went wrong")
 
   bcrypt.compare(req.body.password, user.password, function(err,result){
-    if(result) res.send("Logged in user")
+    if(result){
+      let token = jwt.sign({email: user.email},"secret")
+      res.cookie("token",token)
+      res.send("Logged in user")
+    }  
       else res.send("Something went wrong")
   })
 })
